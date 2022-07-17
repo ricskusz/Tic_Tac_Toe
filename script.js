@@ -60,7 +60,7 @@ const game = (() => {
     let isPlayerOneTurn = true;
 
     // central function handle the game
-    function playGame(){
+    const playGame = () => {
         const table = gameBoard;
         table.clearBoard();
         const cells = table.getCells();
@@ -77,14 +77,14 @@ const game = (() => {
     };
 
     // display the endscreen
-    function displayEndScreen(winner){
+    const displayEndScreen = winner => {
         endScreen.setAttribute('style', 'display: flex;');
         message.textContent = `"${winner}" - player wins!`;
         if(winner == "draw") message.textContent = `Draw!`;
     }
 
     // handle screen events
-    function handleGame(element, cells, tableLock, player1, player2){
+    const handleGame = (element, cells, tableLock, player1, player2) => {
         if(element.textContent || tableLock) return;
 
         if(isPlayerOneTurn){
@@ -111,7 +111,7 @@ const game = (() => {
         isPlayerOneTurn = !isPlayerOneTurn;
     }
 
-    function checkWinner(marksArray){
+    const checkWinner = marksArray => {
         let temp;
         let patternCheck = [];
         let isWinner;
@@ -141,5 +141,4 @@ const game = (() => {
         playGame,
     }
 })();
-
 game.playGame();
